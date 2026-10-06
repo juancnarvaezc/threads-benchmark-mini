@@ -1,1 +1,10 @@
-gcc threads.c -O2 -pthread -o threads
+Linux: gcc linux_threads.c -O2 -pthread -o threads
+Windows: gcc windows_threads.c -O2 -o windows_threads.exe
+
+Notas Windows (MinGW, no necesita librerias extra):
+ - El monitor de CPU usa ZwQuerySystemInformation de ntdll.dll,
+   porque pdh.h no viene en el MinGW.org.
+ - No se puede usar -DN=400 para acortar las pruebas:
+   -DN rompe al compilar con windows.h en este MinGW.
+ - Para comparar checksums entre sistemas, N debe ser igual
+   en linux_threads.c y en windows_threads.c.
