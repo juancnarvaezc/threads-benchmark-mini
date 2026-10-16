@@ -93,6 +93,27 @@ trabajadores que núcleos lógicos para responder la pregunta 8.
 6. Lab 6 → 1 → tabla §12.
 7. Lab 7 → 1 → tabla §13.
 
+## Bibliotecas usadas
+
+| Librería | Tipo | Instrucciones usadas |
+| -------- | ---- | -------------------- |
+| `windows.h` | Hilos | `CreateThread`, `WaitForSingleObject`, `CloseHandle`, `HANDLE` |
+| `windows.h` | Procesos | `CreateProcessA`, `STARTUPINFOA`, `PROCESS_INFORMATION`, `GetCurrentProcessId` |
+| `windows.h` | Memoria compartida entre procesos | `CreateFileMappingA`, `MapViewOfFile`, `UnmapViewOfFile`, `FILE_MAP_ALL_ACCESS` |
+| `windows.h` | Afinidad de CPU | `SetProcessAffinityMask`, `GetProcessAffinityMask`, `GetCurrentProcess` |
+| `windows.h` | Medición del tiempo | `QueryPerformanceCounter`, `QueryPerformanceFrequency`, `LARGE_INTEGER` |
+| `windows.h` | Detección de hardware y API dinámica | `GetSystemInfo`, `GetModuleHandleA`, `GetProcAddress` |
+| `windows.h` | Sincronización entre hilos | `InterlockedExchange`, `InterlockedCompareExchange`, `volatile LONG`, `Sleep` |
+| `ntdll.dll` (resuelta en runtime) | Monitor de CPU por núcleo | `ZwQuerySystemInformation` |
+| `inttypes.h` | Impresión de enteros de 64 bits | `PRIu64` |
+| `stdint.h` | Enteros de ancho fijo | `int64_t`, `uint64_t` |
+| `string.h` | Cadenas y memoria | `memset`, `memcpy`, `strcpy`, `sprintf` |
+| `stdio.h` | Entrada/salida | `printf`, `fgets`, `fflush`, `system` |
+| `stdlib.h` | Memoria y utilidades | `malloc`, `free`, `atoi`, `exit` |
+
+El Lab 1 no usa las APIs de C para el hardware: delega en PowerShell
+(`Get-CimInstance`) y en `%NUMBER_OF_PROCESSORS%` a través de `system()`.
+
 ## Diferencias con la versión Linux
 
 | Concepto | Linux (`../linux`) | Windows (aquí) |

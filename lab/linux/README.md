@@ -88,6 +88,26 @@ trabajadores que núcleos lógicos para responder la pregunta 8.
 6. Lab 6 → 1 → tabla §12.
 7. Lab 7 → 1 → tabla §13.
 
+## Bibliotecas usadas
+
+| Librería | Tipo | Instrucciones usadas |
+| -------- | ---- | -------------------- |
+| `pthread.h` | Hilos | `pthread_create`, `pthread_join`, `pthread_t` |
+| `stdatomic.h` | Sincronización entre hilos | `atomic_bool`, `atomic_init`, `atomic_load`, `atomic_store` |
+| `sys/mman.h` | Memoria compartida entre procesos | `mmap`, `munmap`, `MAP_SHARED`, `MAP_ANONYMOUS` |
+| `unistd.h` | Procesos y sistema | `fork`, `_exit`, `getpid`, `sysconf`, `sleep` |
+| `sys/wait.h` | Espera de procesos | `waitpid` |
+| `sys/types.h` | Tipos del sistema | `pid_t` |
+| `sched.h` | Afinidad de CPU | `sched_setaffinity`, `sched_getaffinity`, `CPU_ZERO`, `CPU_SET`, `CPU_ISSET`, `cpu_set_t` |
+| `time.h` | Medición del tiempo | `clock_gettime`, `CLOCK_MONOTONIC`, `struct timespec` |
+| `stdint.h` | Enteros de ancho fijo | `int64_t`, `uint64_t` |
+| `string.h` | Cadenas y memoria | `memset`, `memcpy`, `strcpy` |
+| `stdio.h` | Entrada/salida | `printf`, `fopen`, `fgets`, `sscanf`, `snprintf`, `fflush`, `perror`, `system` |
+| `stdlib.h` | Memoria y utilidades | `malloc`, `free`, `atoi`, `exit`, `EXIT_FAILURE` |
+
+El Lab 1 no usa bibliotecas del sistema para el hardware: delega en los comandos
+`lscpu`, `lscpu -e` y `nproc` a través de `system()`.
+
 ## Notas
 
 - El acumulador de cada hilo es local a propósito: un `volatile` global
